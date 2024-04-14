@@ -11,6 +11,7 @@ from django.views.generic import (
 )
 
 from django.core.cache import cache
+from django.utils.translation import gettext as _ # импортируем функцию для перевода
 
 
 from .models import Post, Category, News
@@ -151,3 +152,12 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
+
+
+# Create your views here.
+
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+
+        return HttpResponse(string)
